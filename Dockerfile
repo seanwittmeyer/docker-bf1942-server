@@ -6,20 +6,20 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget unzip xz-utils
 
 # Server
 WORKDIR /bf1942
-RUN wget http://sh.metrica.se/static/server/bf1942_lnxded-1.6-rc2.run
+RUN wget https://seanwittmeyer.com/store/bf1942/bf1942_lnxded-1.6-rc2.run
 RUN offset=$(head -n 340 bf1942_lnxded-1.6-rc2.run | wc -c | tr -d " ") && \
     tail -c +$((offset+1)) bf1942_lnxded-1.6-rc2.run | tar -xvzf -
 RUN rm bf1942_lnxded-1.6-rc2.run
 
 # Patch 1
 WORKDIR /
-RUN wget http://sh.metrica.se/static/server/bf1942_update1.61.tar.gz
+RUN wget https://seanwittmeyer.com/store/bf1942/bf1942_update1.61.tar.gz
 RUN tar -xvf bf1942_update1.61.tar.gz
 RUN rm bf1942_update1.61.tar.gz
 
 # Patch 2
 WORKDIR /bf1942
-RUN wget http://sh.metrica.se/static/server/bf1942_lnxded.1.612.static.tar.xz
+RUN wget https://seanwittmeyer.com/store/bf1942/bf1942_lnxded.1.612.static.tar.xz
 RUN tar -xvf bf1942_lnxded.1.612.static.tar.xz
 
 # Fix installation
@@ -28,7 +28,7 @@ RUN ln -s bf1942_lnxded.static bf1942_lnxded
 
 # BFSM
 WORKDIR /bfsmd
-RUN wget http://sh.metrica.se/static/server/BFServerManager201.tgz
+RUN wget https://seanwittmeyer.com/store/bf1942/BFServerManager201.tgz
 RUN tar -xvf BFServerManager201.tgz
 RUN cp bfsmd /bf1942/bfsmd
 RUN cp *.con /bf1942/mods/bf1942/settings/
